@@ -8,7 +8,7 @@
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrii D. <and05gt@gmail.com>",
   "license": "ISC",
   "description": "",
   "devDependencies": {
