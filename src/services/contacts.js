@@ -39,10 +39,11 @@ export const getAllContacts = async ({
 };
 
 export const getContactById = (contactId, userId) => {
-  return ContactsCollection.findOne({
+  const contactById = ContactsCollection.findOne({
     _id: contactId,
     userId,
   });
+  return contactById;
 };
 
 export const createContact = async (payload) => {
