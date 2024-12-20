@@ -14,7 +14,6 @@ requestBody:
           - name
           - phoneNumber
           - contactType
-          - userId
         properties:
           name:
             description: "Contact's name"
@@ -23,7 +22,7 @@ requestBody:
           phoneNumber:
             description: "Contact's phone number"
             type: string
-            example: +380123456789
+            example: '+380123456789'
           email:
             description: "Contact's email"
             type: string
@@ -37,10 +36,6 @@ requestBody:
             type: string
             enum: ['work', 'home', 'personal']
             default: 'personal'
-          userId:
-            description: "Contact's parent id"
-            type: string
-            example: 65e4decdd286b30065d54af9
           photo:
             description: "Link to contact's photo"
             type: string
@@ -68,3 +63,5 @@ responses:
               $ref: '../../components/schemas/contact.yaml'
   '401':
     $ref: '../../components/responses/401.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'

@@ -4,11 +4,12 @@ required:
   - name
   - phoneNumber
   - contactType
+  - userId
 properties:
   _id:
     description: "Contact's id"
     type: string
-    example: 65e4decdd286b30065d54af9
+    example: '65e4decdd286b30065d54af9'
   name:
     description: "Contact's name"
     type: string
@@ -16,7 +17,7 @@ properties:
   phoneNumber:
     description: "Contact's phone number"
     type: string
-    example: +380123456789
+    example: '+380123456789'
   email:
     description: "Contact's email"
     type: string
@@ -33,7 +34,7 @@ properties:
   userId:
     description: "Contact's parent id"
     type: string
-    example: 65e4decdd286b30065d54af9
+    example: '65e4decdd286b30065d54af9'
   photo:
     description: "Link to contact's photo"
     type: string
