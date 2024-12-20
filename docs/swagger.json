@@ -183,8 +183,7 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "contactType",
-                  "userId"
+                  "contactType"
                 ],
                 "properties": {
                   "name": {
@@ -195,7 +194,7 @@
                   "phoneNumber": {
                     "description": "Contact's phone number",
                     "type": "string",
-                    "example": 380123456789
+                    "example": "+380123456789"
                   },
                   "email": {
                     "description": "Contact's email",
@@ -216,11 +215,6 @@
                       "personal"
                     ],
                     "default": "personal"
-                  },
-                  "userId": {
-                    "description": "Contact's parent id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
                   },
                   "photo": {
                     "description": "Link to contact's photo",
@@ -358,9 +352,6 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "userId"
-                ],
                 "properties": {
                   "name": {
                     "description": "Contact's name",
@@ -391,11 +382,6 @@
                       "personal"
                     ],
                     "default": "personal"
-                  },
-                  "userId": {
-                    "description": "Contact's parent id",
-                    "type": "string",
-                    "example": "65e4decdd286b30065d54af9"
                   },
                   "photo": {
                     "description": "Link to contact's photo",
@@ -512,7 +498,8 @@
           "_id",
           "name",
           "phoneNumber",
-          "contactType"
+          "contactType",
+          "userId"
         ],
         "properties": {
           "_id": {
