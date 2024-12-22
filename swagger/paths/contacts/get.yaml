@@ -50,7 +50,7 @@ responses:
               example: 200
             message:
               type: string
-              example: Successfully found contacts!
+              example: "Successfully found contacts!"
             data:
               type: object
               required:
