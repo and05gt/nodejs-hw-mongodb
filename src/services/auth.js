@@ -18,7 +18,7 @@ import handlebars from 'handlebars';
 import {
   getFullNameFromGoogleTokenPayload,
   validateCode,
-} from '../utils/google.js';
+} from '../utils/googleOAuth2.js';
 
 export const registerUser = async (payload) => {
   const user = await User.findOne({ email: payload.email });
