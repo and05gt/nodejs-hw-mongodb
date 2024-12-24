@@ -201,7 +201,8 @@
                   },
                   "email": {
                     "description": "Contact's email",
-                    "type": "string"
+                    "type": "string",
+                    "example": "johndoe@mail.com"
                   },
                   "isFavourite": {
                     "description": "Contact in favourites",
@@ -258,6 +259,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -374,7 +378,8 @@
                   },
                   "email": {
                     "description": "Contact's email",
-                    "type": "string"
+                    "type": "string",
+                    "example": "johndoe@mail.com"
                   },
                   "isFavourite": {
                     "description": "Contact in favourites",
@@ -431,6 +436,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -525,11 +533,13 @@
                   },
                   "email": {
                     "description": "User's email",
-                    "type": "string"
+                    "type": "string",
+                    "example": "johndoe@mail.com"
                   },
                   "password": {
                     "description": "User's password",
-                    "type": "string"
+                    "type": "string",
+                    "example": "abcde12345"
                   }
                 }
               }
@@ -630,11 +640,13 @@
                 "properties": {
                   "email": {
                     "description": "User's email",
-                    "type": "string"
+                    "type": "string",
+                    "example": "johndoe@mail.com"
                   },
                   "password": {
                     "description": "User's password",
-                    "type": "string"
+                    "type": "string",
+                    "example": "abcde12345"
                   }
                 }
               }
@@ -769,6 +781,9 @@
                 }
               }
             }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
           },
           "500": {
             "$ref": "#/components/responses/500"
@@ -906,7 +921,8 @@
                 "properties": {
                   "email": {
                     "description": "User's email",
-                    "type": "string"
+                    "type": "string",
+                    "example": "johndoe@mail.com"
                   }
                 }
               }
@@ -1040,11 +1056,13 @@
                 "properties": {
                   "token": {
                     "description": "Json Web Token",
-                    "type": "string"
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzU5ZWViMDUxMzgzMmIwNWFhZjJmNTEiLCJlbWFpbCI6ImFuZDA1Z3RAZ21haWwuY29tIiwiaWF0IjoxNzM0MjAyNzU5LCJleHAiOjE3MzQyMDMwNTl9.K2kZXFqKyEV1ilTSKUlaKb1Lb8odm_aFZ1GxtjS-qMg"
                   },
                   "password": {
                     "description": "New user's password",
-                    "type": "string"
+                    "type": "string",
+                    "example": "abcde12345"
                   }
                 }
               }
@@ -1150,6 +1168,179 @@
           }
         }
       }
+    },
+    "/auth/get-oauth-url": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Get Google OAuth url",
+        "operationId": "getOAuthUrl",
+        "description": "Get Google OAuth url",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Successfully get Google OAuth url!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfully get Google OAuth url!"
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "url"
+                      ],
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "example": "https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&response_type=code&client_id=843288576438-07cd2q2ftmcsf6qnfn73h0oat38udavi.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fconfirm-google-auth"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/400"
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
+    },
+    "/auth/confirm-oauth": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Confirm Google OAuth",
+        "operationId": "confirmOAuth",
+        "description": "Confirm Google OAuth",
+        "security": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "code"
+                ],
+                "properties": {
+                  "code": {
+                    "description": "Code from url",
+                    "type": "string",
+                    "example": "4/0AanRRrvk3lbpfGNRb_DadvUW3advNL5A1zmyrNm8-JbJ8Jn2GVRNXKCxaN73hM5NJg1wlA"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully logged in via Google OAuth!",
+            "headers": {
+              "Set-Cookie": {
+                "schema": {
+                  "type": "string",
+                  "example": "refreshToken=0nEt+68+wc+SMaHWgff4AXESq6H89ORy1HX85/mN; sessionId=65e4decdd286b30065d54af9; Path=/; HttpOnly"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Successfully logged in via Google OAuth!"
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "accessToken"
+                      ],
+                      "properties": {
+                        "accessToken": {
+                          "type": "string",
+                          "example": "0nEt+68+wc+SMaHWgff4AXESq6H89ORy1HX85/mN"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "status",
+                    "message",
+                    "data"
+                  ],
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "UnauthorizedError"
+                    },
+                    "data": {
+                      "type": "object",
+                      "required": [
+                        "message"
+                      ],
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Unauthorized Error"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/500"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1187,7 +1378,8 @@
           },
           "email": {
             "description": "Contact's email",
-            "type": "string"
+            "type": "string",
+            "example": "johndoe@mail.com"
           },
           "isFavourite": {
             "description": "Contact in favourites",
@@ -1238,16 +1430,55 @@
           },
           "email": {
             "description": "User's email",
-            "type": "string"
+            "type": "string",
+            "example": "johndoe@mail.com"
           },
           "password": {
             "description": "User's password",
-            "type": "string"
+            "type": "string",
+            "example": "abcde12345"
           }
         }
       }
     },
     "responses": {
+      "400": {
+        "description": "Bad Request error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "required": [
+                "status",
+                "message",
+                "data"
+              ],
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "example": 400
+                },
+                "message": {
+                  "type": "string",
+                  "example": "BadRequestError"
+                },
+                "data": {
+                  "type": "object",
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Bad Request Error"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "401": {
         "description": "Unauthorized error",
         "content": {
