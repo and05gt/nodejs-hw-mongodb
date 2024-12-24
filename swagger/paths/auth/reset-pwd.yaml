@@ -16,9 +16,11 @@ requestBody:
           token:
             description: 'Json Web Token'
             type: string
+            example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NzU5ZWViMDUxMzgzMmIwNWFhZjJmNTEiLCJlbWFpbCI6ImFuZDA1Z3RAZ21haWwuY29tIiwiaWF0IjoxNzM0MjAyNzU5LCJleHAiOjE3MzQyMDMwNTl9.K2kZXFqKyEV1ilTSKUlaKb1Lb8odm_aFZ1GxtjS-qMg'
           password:
             description: "New user's password"
             type: string
+            example: 'abcde12345'
 responses:
   '200':
     description: 'Password has been successfully reset.'

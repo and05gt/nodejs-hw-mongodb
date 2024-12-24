@@ -21,6 +21,7 @@ properties:
   email:
     description: "Contact's email"
     type: string
+    example: 'johndoe@mail.com'
   isFavourite:
     description: 'Contact in favourites'
     type: boolean
